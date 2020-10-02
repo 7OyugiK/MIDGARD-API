@@ -1,0 +1,16 @@
+{
+  "listen_port": 8080,
+  "thorchain": {
+    "url": "http://18.159.173.48:27147/websocket",
+    "node_url": "http://18.159.173.48:1317/thorchain",
+    "last_chain_backoff": "7s"
+  },
+  "timescale": {
+    "host": "localhost",
+    "port": 5432,
+    "user_name": "midgard",
+    "password": "password",
+    "database": "midgard",
+    "sslmode": "disable"
+  }
+}
