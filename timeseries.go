@@ -123,7 +123,6 @@ func GetTotalRuneStakes(pool string, blockTimeStamp  int)(
 	}
 	log.Print("TotalRuneStakes ", mg.TotalRuneStakes)
 
-
 	return mg.TotalRuneStakes, nil
 }
 
@@ -144,9 +143,7 @@ func GetTotalRunUnstakes(pool string, blockTimeStamp  int)(
 	}
 	log.Print("TotalRunUnstakes ", mg.TotalRunUnstakes)
 
-
 	return mg.TotalRunUnstakes, nil
-
 }
 
 func GetTotalRuneSwapIn(pool string, blockTimeStamp  int)(
@@ -165,7 +162,6 @@ func GetTotalRuneSwapIn(pool string, blockTimeStamp  int)(
 	}
 
 	log.Print("TotalRuneSwapIn ", mg.TotalRuneSwapIn)
-
 
 	return mg.TotalRuneSwapIn, nil
 }
@@ -190,7 +186,6 @@ func GetTotalRuneSwapOut(pool string, blockTimeStamp  int)(
 
 	log.Print("TotalRuneSwapOut ", mg.TotalRuneSwapOut)
 
-
 	return mg.TotalRuneSwapOut, nil
 }
 
@@ -208,7 +203,6 @@ func GetFees(pool string, blockTimeStamp  int)(Fees int64, err error){
 		rows.Scan(&mg.Fees)
 	}
 	log.Print("Fees ", mg.Fees)
-
 
 	return mg.Fees, nil
 }
@@ -229,9 +223,7 @@ func GetPoolDeductRefunds(pool string, blockTimeStamp  int)(
 	}
 	log.Print("PoolDeductRefunds ", mg.PoolDeductRefunds)
 
-
 	return mg.PoolDeductRefunds, nil
-
 }
 
 func GetRuneFeesSwaps(pool string, blockTimeStamp  int)(
@@ -252,10 +244,7 @@ func GetRuneFeesSwaps(pool string, blockTimeStamp  int)(
 
 	log.Print("RuneFeesSwaps ", mg.RuneFeesSwaps)
 
-
 	return mg.RuneFeesSwaps, nil
-
-
 }
 
 func GetPoolDeductSwaps(pool string, blockTimeStamp  int)(
@@ -275,9 +264,7 @@ func GetPoolDeductSwaps(pool string, blockTimeStamp  int)(
 
 	log.Print("PoolDeductSwaps ", mg.PoolDeductSwaps)
 
-
 	return mg.PoolDeductSwaps, nil
-
 }
 
 func GetRuneFeeUnstakes(pool string, blockTimeStamp  int)(
@@ -296,9 +283,7 @@ func GetRuneFeeUnstakes(pool string, blockTimeStamp  int)(
 	}
 	log.Print("RuneFeeUnstakes ", mg.RuneFeeUnstakes)
 
-
 	return mg.RuneFeeUnstakes, nil
-
 }
 
 func GetPoolDeductUnstakes(pool string, blockTimeStamp  int)(
@@ -318,9 +303,7 @@ func GetPoolDeductUnstakes(pool string, blockTimeStamp  int)(
 
 	log.Print("PoolDeductUnstakes ", mg.PoolDeductUnstakes)
 
-
 	return mg.PoolDeductRefunds, nil
-
 }
 
 func GetAdds(pool string, blockTimeStamp  int) (Add int64, err error) {
@@ -337,9 +320,7 @@ func GetAdds(pool string, blockTimeStamp  int) (Add int64, err error) {
 	}
 	log.Print("Adds ", mg.Adds)
 
-
 	return mg.Rewards, nil
-
 }
 
 func GetRewards(pool string, blockTimeStamp  int)(Rewards int64, err error)  {
@@ -357,10 +338,7 @@ func GetRewards(pool string, blockTimeStamp  int)(Rewards int64, err error)  {
 
 	log.Print("Rewards ", mg.Rewards)
 
-
 	return mg.Rewards, nil
-
-
 }
 
 func GetErrata(pool string, blockTimeStamp  int)(Errata int64, err error){
@@ -378,9 +356,7 @@ func GetErrata(pool string, blockTimeStamp  int)(Errata int64, err error){
 
 	log.Print("Errata ", mg.Errata)
 
-
 	return mg.Errata, nil
-	
 }
 
 func GetGas(pool string, blockTimeStamp  int) (Gas int64, err error) {
@@ -397,10 +373,8 @@ func GetGas(pool string, blockTimeStamp  int) (Gas int64, err error) {
 	}
 
 	log.Print("Gas ", mg.Gas)
-
-
-	return mg.Gas, nil
 	
+	return mg.Gas, nil
 }
 
 
