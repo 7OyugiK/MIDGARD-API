@@ -101,7 +101,7 @@ func main(){
 	blocks := SetupBlockchain(&c)
 	log.Print(blocks)
 
-	file, err := os.Create("result.csv")
+	file, err := os.Create("newblocksresults.csv")
 	checkError("Cannot create file", err)
 	defer file.Close()
 
@@ -134,9 +134,10 @@ func main(){
 		RuneFeeUnstakes, _ := timeseries.GetRuneFeeUnstakes(pool, blockTimeStamp)
 		PoolDeductUnstakes, _ := timeseries.GetPoolDeductUnstakes(pool, blockTimeStamp)
 		Adds, _ := timeseries.GetAdds(pool, blockTimeStamp)
-		Rewards, _ := timeseries.GetAdds(pool, blockTimeStamp)
+		Rewards, _ := timeseries.GetRewards(pool, blockTimeStamp)
 		//Errata, _ := timeseries.GetErrata(pool,blockTimeStamp)
 		Gas, _ := timeseries.GetGas(pool, blockTimeStamp)
+		BlockDepth, _ := timeseries.GetBlockDepth(pool, blockTimeStamp)
 
 		sqlDepth := TotalRuneStakes + TotalRuneSwapIn + Adds + Rewards + Gas
 		lessDeductions := sqlDepth - (TotalRunUnstakes  + TotalRuneSwapOut + RuneFeesSwaps + PoolDeductSwaps + PoolDeductUnstakes + RuneFeeUnstakes + PoolDeductRefunds)
@@ -144,9 +145,11 @@ func main(){
 		sqlDeepth := strconv.Itoa(int(lessDeductions))
 		log.Print("written to csv")
 		log.Print(TotalRuneStakes)
+		IntBalRune, err := strconv.Atoi(BalanceRune)
+		DiffInDepths :=  IntBalRune - int(lessDeductions)
 
 		var csvData = [][]string{
-			{s, strconv.Itoa(blockTimeStamp), BalanceRune, sqlDeepth},
+			{s, strconv.Itoa(blockTimeStamp), BalanceRune, sqlDeepth, strconv.Itoa(int(BlockDepth)), strconv.Itoa(DiffInDepths)},
 		}
 		err = writer.WriteAll(csvData) // returns error
 		if err != nil {
