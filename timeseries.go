@@ -48,6 +48,7 @@ type midgard struct {
 	Rewards int64
 	Errata int64
 	Gas int64
+	BlockDepth int64
 }
 
 // AggTrack has a snapshot of runningTotals.
@@ -86,6 +87,27 @@ func FetchHeights()([]int64, error) {
 	}
 
 	return offsets, rows.Err()
+
+}
+
+func GetBlockDepth(pool string, blockTimeStamp  int)(BlockDepth int64, err error){
+	rows, err := DBQuery(context.Background(), "select rune_e8 from block_pool_depths where pool = $1 and block_timestamp = $2",pool, blockTimeStamp)
+	if err != nil {
+		return 0000, err
+	}
+	defer rows.Close()
+
+	var mg midgard
+	if rows.Next() {
+		rows.Scan(&mg.BlockDepth)
+	}
+
+	log.Print("BlockDepth ", mg.BlockDepth)
+
+	return mg.BlockDepth, nil
+
+
+
 
 }
 
@@ -373,7 +395,7 @@ func GetGas(pool string, blockTimeStamp  int) (Gas int64, err error) {
 	}
 
 	log.Print("Gas ", mg.Gas)
-	
+
 	return mg.Gas, nil
 }
 
